@@ -1,0 +1,71 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+abstract class Utilisateur {
+  - id : int
+  - nom : String
+}
+
+class Operateur {
+  + commanderRobot(c : TypeCommande) : Tache
+  + recevoirNotification(message : String) : void
+}
+
+class ResponsableAtelier {
+  + consulterDureeMoyenne() : double
+  + consulterNbRequetesParOperateur() : Map<Operateur, Integer>
+}
+
+class Robot {
+  - id : int
+  - nom : String
+  - position : Lieu
+  + recupererProduit() : boolean
+  + deposerProduit() : boolean
+  + retourDock() : boolean
+}
+
+class Tache {
+  - id : int
+  - commande : TypeCommande
+  - etat : EtatTache
+  - dateDebut : Timestamp
+  - dateFin : Timestamp
+  + calculerDuree() : long
+}
+
+class Produit {
+  - id : int
+  - nom : String
+  - position : Lieu
+}
+
+enum TypeCommande {
+  RECUPERER_PRODUIT
+  DEPOSER_PRODUIT
+  RETOUR_DOCK
+}
+
+enum EtatTache {
+  EN_COURS
+  TERMINEE
+}
+
+enum Lieu {
+  SALLE_108
+  MAGAUTO
+  DOCK
+}
+
+Utilisateur <|-- Operateur
+Utilisateur <|-- ResponsableAtelier
+
+Operateur "1" -- "0..*" Tache : réalise >
+Robot "1" -- "0..*" Tache : exécute >
+Robot "1" -- "0..*" Produit : déplace >
+
+Tache --> TypeCommande
+Tache --> EtatTache
+Robot --> Lieu
+Produit --> Lieu
+@enduml
