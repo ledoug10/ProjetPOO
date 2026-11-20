@@ -1,0 +1,31 @@
+@startuml
+left to right direction
+actor Opérateur
+actor "Resp. Atelier" as Resp
+actor "Robot Omron JN" as Robot
+
+rectangle AppModPOO {
+  usecase "Récupérer un produit" as UC1
+  usecase "Déposer un produit" as UC2
+  usecase "Retourner au dock" as UC3
+  usecase "Enregistrer la tâche" as UC4
+  usecase "Notifier la fin de tâche" as UC5
+  usecase "Consulter durée moyenne\ndes tâches" as UC6
+  usecase "Consulter nb de requêtes\npar opérateur" as UC7
+}
+
+Opérateur --> UC1
+Opérateur --> UC2
+Opérateur --> UC3
+Resp --> UC6
+Resp --> UC7
+UC1 ..> UC4 : <<include>>
+UC2 ..> UC4 : <<include>>
+UC3 ..> UC4 : <<include>>
+UC1 ..> UC5 : <<include>>
+UC2 ..> UC5 : <<include>>
+UC3 ..> UC5 : <<include>>
+UC1 --> Robot
+UC2 --> Robot
+UC3 --> Robot
+@enduml
