@@ -1,0 +1,29 @@
+# Fichiers compilés et archives Java
+*.class
+*.jar
+*.war
+*.ear
+bin/
+out/
+target/
+build/
+
+# Logs d'erreurs de la JVM
+hs_err_pid*
+replay_pid*
+*.log
+
+# Fichiers temporaires SQLite (conserve projet_poo.db suivi par Git)
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite-journal
+*.sqlite-wal
+*.sqlite-shm
+
+# Sessions temporaires SQLTools
+*.session.sql
+
+# Fichiers système (Windows / macOS)
+.DS_Store
+Thumbs.db
