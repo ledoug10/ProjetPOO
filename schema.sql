@@ -1,9 +1,4 @@
 PRAGMA foreign_keys = ON;
-DROP TABLE IF EXISTS tache;
-DROP TABLE IF EXISTS produit;
-DROP TABLE IF EXISTS operateur;
-DROP TABLE IF EXISTS robot;
-
 CREATE TABLE operateur (
   id_operateur INTEGER PRIMARY KEY AUTOINCREMENT,
   nom          TEXT NOT NULL UNIQUE
